@@ -1056,6 +1056,9 @@ margin:-2px 0px;
      <string notr="true">background-color: rgba(0,0,0,50);
 border-radius:12px;</string>
     </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
     <widget class="QWidget" name="page">
      <widget class="QListWidget" name="loaded_song_listWidget">
       <property name="geometry">
@@ -1325,7 +1328,7 @@ text-align:center;</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
-           <widget class="QPushButton" name="add_songs_btn_2">
+           <widget class="QPushButton" name="loadselected_btn">
             <property name="minimumSize">
              <size>
               <width>120</width>
