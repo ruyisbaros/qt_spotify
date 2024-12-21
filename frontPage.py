@@ -15,15 +15,24 @@ class MyMainWindow(QMainWindow, Ui_Music_App):
         self.current_song_list = []
         self.favorite_songs_list = []
         self.play_list_songs_list = []
+        # Globals
+        global stopped
+        global looped
+        global is_shuffled
+        stopped = False
+        looped = True
+        is_shuffled = False
+
         # Remove initial title bar
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setWindowFlags(Qt.FramelessWindowHint)
         # set Initial position of the window
         self.initialPosition = self.pos()
 
-        # Create actions
+        # CONNECTIONS
         self.add_songs_btn.clicked.connect(self.add_songs_func)
         self.play_btn.clicked.connect(self.play_song_func)
+        self.pause_btn.clicked.connect(self.pause_song_func)
 
         # Add our app moveable properties
         def moveAPP(event):
@@ -76,3 +85,10 @@ class MyMainWindow(QMainWindow, Ui_Music_App):
             self.music_player.play()
         except Exception as e:
             print("Play song error: ", e)
+
+    # Pause and unpause the song
+    def pause_song_func(self):
+        if self.music_player.state() == QMediaPlayer.PlayingState:
+            self.music_player.pause()
+        else:
+            self.music_player.play()
